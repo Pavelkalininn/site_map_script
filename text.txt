@@ -1,0 +1,6 @@
+http://google.com/ 100.8977128 130 google.txt
+http://google.com/ 37.1199265 38 google.txt
+http://crawler-test.com/ 696.920266 499 crawler-test.txt
+https://vk.com 1420.8977662 509 vk.txt
+https://yandex.ru 33185.2856729 17455 yandex.txt
+
