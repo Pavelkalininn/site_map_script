@@ -6,6 +6,14 @@ import requests
 from bs4 import BeautifulSoup
 from threading import Thread
 
+INPUT_URLS = [
+        'http://google.com/',
+        'http://crawler-test.com/',
+        'https://vk.com',
+        'https://yandex.ru',
+        'https://stackoverflow.com',
+    ]
+
 HEADERS = {
     'User-Agent':
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:45.0)'
@@ -22,7 +30,8 @@ class SiteMap:
         self.url_map: dict = {}
         self.prefix = self.main_url.split('//')[0]
 
-    def __get_response(self, response_url):
+    @staticmethod
+    def __get_response(response_url):
         try:
             return requests.get(response_url, headers=HEADERS)
         except requests.exceptions.ConnectionError as error:
@@ -45,13 +54,16 @@ class SiteMap:
                         or (current_url.startswith('/')
                             and len(current_url) > 1)
                 ):
-                    if (current_url.startswith('/')
+                    if (
+                            current_url.startswith('/')
                             and len(current_url) > 1
-                            and not current_url.startswith('//')):
+                            and not current_url.startswith('//')
+                    ):
                         current_url = self.main_url + current_url
                     if current_url.startswith('//'):
                         current_url = self.prefix + current_url
-                    if (current_url not in self.site_urls
+                    if (
+                            current_url not in self.site_urls
                             and self.main_url in current_url
                     ):
                         self.site_urls.append(current_url)
@@ -73,16 +85,9 @@ if __name__ == '__main__':
     logging.basicConfig(
         level=logging.INFO,
         filename='map.log',
-        format=f'%(asctime)s, %(levelname)s, %(message)s, %(name)s')
-
-    input_urls = [
-        'http://google.com/',
-        'http://crawler-test.com/',
-        'https://vk.com',
-        'https://yandex.ru',
-        'https://stackoverflow.com',
-    ]
-    for url in input_urls:
+        format=f'%(asctime)s, %(levelname)s, %(message)s, %(name)s'
+    )
+    for url in INPUT_URLS:
         logging.info(f'Start {url} mapping')
         filename = url.split('//')[-1].split('www.')[-1].split('.')[0] + '.txt'
         start = time.perf_counter()
