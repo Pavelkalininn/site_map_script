@@ -72,7 +72,7 @@ class SiteMap:
 if __name__ == '__main__':
     logging.basicConfig(
         level=logging.INFO,
-        filename='map1.log',
+        filename='map.log',
         format=f'%(asctime)s, %(levelname)s, %(message)s, %(name)s')
 
     input_urls = [
