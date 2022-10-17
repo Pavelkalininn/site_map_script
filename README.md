@@ -1,9 +1,9 @@
-# Скрипт для создания карты сайта
+# Script for creating a site map
 
-### Описание
-Скрипт проходит по всем ссылкам на сайте, и если они находятся на этом домене, то добавляет их в дерево в формате json
+### Description
+The script goes through all the links on the site, and if they are on this domain, it adds them to the tree in json format
 
-### Технологии
+### Technologies
 
 beautifulsoup4==4.11.1
 bs4==0.0.1
@@ -15,7 +15,7 @@ requests==2.28.1
 soupsieve==2.3.2.post1
 urllib3==1.26.10
 
-### Для запуска выполните в папке с работой (Windows):
+### To start, run in the work folder (Windows):
 
     python -m venv venv
     source venv/Scripts/activate
@@ -24,16 +24,15 @@ urllib3==1.26.10
     
     python main.py
 
-### В скрипт изначально внесены следующие url:
-
+### The following urls were initially added to the script:
     http://google.com/
     http://crawler-test.com/
     https://vk.com
     https://yandex.ru
     https://stackoverflow.com
 
-При необходимости проверить другой сайт, необходимо внести его в список в скрипте main.py
+If you need to check another site, you need to add it to the list in the script main.py
 
-логи с информацией о работе скрипта находятся в папке с скриптом с названием map.log
+logs with information about the script are located in a folder with a script called map.log
 
-# Автор: Паша Калинин
+# Author: Pavel Kalinin
